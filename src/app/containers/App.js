@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
-import {User} from './User';
-import {Main} from './Main';
+import {User} from './../components/User';
+import {Main} from './../components/Main';
 
 class App extends React.Component {
 
@@ -16,14 +16,14 @@ class App extends React.Component {
 
 }
 
-const mapStateToprops = (state) => {
+const mapStateToProps = (state) => {
     return {
         user: state.user,
         math: state.math
     };
 };
 
-const mapDispatchToprops = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         setName: (name) => {
             dispatch({
@@ -34,4 +34,4 @@ const mapDispatchToprops = (dispatch) => {
     };
 };
 
-export default connect(mapStateToprops, mapDispatchToprops)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
