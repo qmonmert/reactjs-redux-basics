@@ -1,15 +1,17 @@
 import React from "react";
 import {connect} from "react-redux";
+
 import {User} from './../components/User';
 import {Main} from './../components/Main';
+import {setName, setAge} from './../actions/userAction'
 
 class App extends React.Component {
 
     render() {
         return (
             <div className="container">
-                <Main changeUsername={() => this.props.setName("Thibaud")}/>
-                <User username={this.props.user.name} />
+                <Main changeUsername={() => this.props.setName("Thibaud")} changeAge={() => this.props.setAge(24)}/>
+                <User username={this.props.user.name} age={this.props.user.age} />
             </div>
         );
     }
@@ -26,10 +28,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         setName: (name) => {
-            dispatch({
-                type: "SET_NAME",
-                payload: name
-            });
+            dispatch(setName(name));
+        },
+        setAge: (age) => {
+            dispatch(setAge(age));
         }
     };
 };
